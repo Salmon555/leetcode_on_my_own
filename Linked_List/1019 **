@@ -1,0 +1,30 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def nextLargerNodes(self, head):
+        """
+        :type head: ListNode
+        :rtype: List[int]
+        """
+        nums = []
+        while head:
+            nums.append(head.val)
+            head = head.next
+        n = len(nums)
+        res = [0] * n
+        stack = []
+        
+        for i in range(n):
+            while stack and nums[stack[-1]] < nums[i]:
+                res[stack.pop()] = nums[i]
+                print(stack)
+            stack.append(i)
+            print(stack)
+
+
+        return res
+        
