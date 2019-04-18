@@ -1,0 +1,50 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def splitListToParts(self, root, k):
+        """
+        :type root: ListNode
+        :type k: int
+        :rtype: List[ListNode]
+        """
+        cur=root
+        length=0
+        while cur:
+            length+=1
+            cur=cur.next
+        list_length=length/k
+        longer_number=length%k
+        ###print(list_length)
+        ###print(longer_number)
+        ans=[]
+        cur=root
+        for i in range(0,longer_number):
+            temp=cur
+            for j in range(0,list_length):
+                cur=cur.next
+            temp1=cur.next
+            cur.next=None
+            cur=temp1
+            ans.append(temp)
+        
+        if cur:
+            print(cur.val)
+        if list_length==0:
+            for i in range(0,k-longer_number):
+                ans.append(None)
+        else:
+            for i in range(0,k-longer_number):
+                temp=cur
+                for j in range(0,list_length-1):
+                    cur=cur.next
+                temp1=cur.next
+                cur.next=None
+                cur=temp1
+                ans.append(temp)
+        return ans
+            
+        
