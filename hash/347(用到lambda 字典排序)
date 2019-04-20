@@ -1,0 +1,17 @@
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        dic={}
+        for i in nums:
+            dic[i]=dic.get(i,0)+1
+        sorted(dic.values())
+        dic=sorted(dic.iteritems(),key=lambda x:x[1],reverse=True)
+        ans=[]
+        for i in range(0,k):
+            ans.append(dic[i][0])
+        return ans
+        
