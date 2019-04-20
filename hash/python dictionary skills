@@ -4,6 +4,8 @@ dict.get(key, default=None)
 当改key不存在时，则返回默认值default
 counts[i] = counts.get(i, 0) + 1
 
+字典按值或者按keys排序：
+https://www.cnblogs.com/dylan-wu/p/6041465.html
 
 https://www.cnblogs.com/wjmblogs/p/9262319.html
 
