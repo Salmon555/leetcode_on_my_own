@@ -1,0 +1,18 @@
+classic way in creating a dic:
+get() 函数返回指定键的值
+dict.get(key, default=None)
+当改key不存在时，则返回默认值default
+counts[i] = counts.get(i, 0) + 1
+
+
+https://www.cnblogs.com/wjmblogs/p/9262319.html
+
+a={}
+a.update(b=2)
+a[b]=2
+
+对字典的key或者value排序
+sorted(d.keys())
+
+
+set()函数可以取一个list里所有不重复的元素。成为一个字典v
