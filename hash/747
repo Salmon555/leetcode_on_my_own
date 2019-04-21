@@ -1,0 +1,22 @@
+class Solution(object):
+    def dominantIndex(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if len(nums)==1:
+            return 0
+        new=sorted(nums[0:2])
+        for i in nums[2:]:
+            if i<=new[0]:
+                continue
+            elif i>new[0] and i<=new[1]:
+                new[0]=i
+            else:
+                new[0]=new[1]
+                new[1]=i
+        if new[1]>=2*new[0]:
+            return nums.index(new[1])
+        else:
+            return -1
+        
