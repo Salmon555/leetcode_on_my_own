@@ -1,0 +1,26 @@
+class Solution(object):
+    def getHint(self, secret, guess):
+        """
+        :type secret: str
+        :type guess: str
+        :rtype: str
+        """
+        A=B=0
+        dica,dicb={},{}
+        for i in secret:
+            dica[i]=dica.get(i,0)+1
+        for i in guess:
+            dicb[i]=dicb.get(i,0)+1
+        for i in range(0,len(secret)):
+            if secret[i]==guess[i]:
+                A+=1
+        #print(dica)
+        #print(dicb)
+        for i in dica.keys():
+            if i in dicb.keys():
+                if dicb[i]>=dica[i]:
+                    B+=dica[i]
+                else:
+                    B+=dicb[i]
+        B=B-A
+        return str(A)+"A"+str(B)+"B"
