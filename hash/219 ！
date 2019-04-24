@@ -1,0 +1,19 @@
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: bool
+        """
+        if len(set(nums))==len(nums):
+            return False
+        else:
+            new_dict={}
+            for ind, e in enumerate(nums):
+                if e not in new_dict.keys():
+                    new_dict[e]=ind
+                elif e in new_dict.keys() and ind-new_dict[e]<=k:
+                    return True
+                else:
+                    new_dict[e]=ind                                  
+            return False
