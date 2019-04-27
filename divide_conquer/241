@@ -1,0 +1,22 @@
+class Solution:
+    def cal(self,num1,num2,op):
+        if op=="+":
+            return num1+num2
+        elif op=="-":
+            return num1-num2
+        else:
+            return num1*num2
+        
+    def diffWaysToCompute(self, input: str) -> List[int]:
+        if "+" not in input and "-" not in input and "*" not in input:
+            return [int(input)]
+        res=[]
+        for i in range(0,len(input)):
+            if input[i] in "-+*":
+                res1=self.diffWaysToCompute(input[0:i])
+                res2=self.diffWaysToCompute(input[i+1:])
+                for j in res1:
+                    for k in res2:
+                        res.append(self.cal(j,k,input[i]))
+        return res
+        
