@@ -1,0 +1,18 @@
+class Solution:
+    def dis(self,points:List[int]):
+        return (points[0]**2+points[1]**2)**0.5
+    def kClosest(self, points: List[List[int]], K: int) -> List[List[int]]:
+        new=[]
+        for i in points:
+            new.append(self.dis(i))
+        dic={}
+        for ind,j in enumerate(new):
+            dic[ind]=j
+        dic=sorted(dic.items(),key=lambda x:x[1])
+        ans=[]
+        for i in range(0,K):
+            ans.append(points[dic[i][0]])
+        return ans
+            
+        
+        
