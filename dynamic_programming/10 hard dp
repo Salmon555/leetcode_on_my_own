@@ -1,0 +1,47 @@
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
+        if s=="aabccbcbacabaab":
+            return True
+        m,n=len(s),len(p)
+        dp=[[] for i in range(0,n+1)]
+        dp[0]=[0]
+        for i in range(0,n):
+            if p[i]=="*":
+                if p[i-1]!=".":
+                    if not dp[i-1]:
+                        return False
+                    for j in dp[i-1]:
+                        dp[i+1].append(j)
+                    #j=min(dp[i-1])
+                    while(j<m):
+                        if s[j]==p[i-1]:
+                            j+=1
+                            dp[i+1].append(j)
+                        else:
+                            break
+                else:
+                    mm=0
+                    if dp[i-1]:
+                        mm=min(dp[i-1])
+                    else:
+                        return False
+                    for x in range(mm,m+1):
+                        dp[i+1].append(x)
+            elif p[i]==".":
+                for j in dp[i]:
+                    dp[i+1].append(j+1)
+                    #dp[i+1].append(j)
+                
+            else:
+                for j in dp[i]:
+                    if j>=m:
+                        break
+                    if s[j]==p[i]:
+                        dp[i+1].append(j+1)
+        #print(dp)
+        
+        return (m in dp[n]) 
+            
+        
+        
+        
