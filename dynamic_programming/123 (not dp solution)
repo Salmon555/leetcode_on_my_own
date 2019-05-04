@@ -1,0 +1,20 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        def maxone(nums):
+            if len(nums)<=1:
+                return 0
+            left_min,ans=nums[0],0
+            for i in nums:
+                ans=max(ans,i-left_min)
+                left_min=min(left_min,i)
+            return ans
+        
+        if len(prices)<=1:
+            return 0
+        ans,left_min=0,prices[0]
+        for i in range(0,len(prices)):
+            if prices[i]>left_min:
+                ans=max(prices[i]-left_min+maxone(prices[i+1:]),ans)           
+            left_min=min(left_min,prices[i])
+        return ans
+        
