@@ -1,0 +1,14 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        if len(prices)<=1:
+            return 0
+        left_min=prices[0]
+        ans=0
+        for i in prices:
+            if i-left_min>ans:
+                ans=i-left_min
+            if i<left_min:
+                left_min=i
+        return ans
+            
+        
