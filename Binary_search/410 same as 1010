@@ -1,0 +1,17 @@
+class Solution:
+    def splitArray(self, nums: List[int], m: int) -> int:
+        left,right=max(nums),sum(nums)
+        while (right>left):
+            mid=(right+left)/2
+            total,cnt=0,1
+            for n in nums:
+                if n+total>mid:
+                    total=0
+                    cnt+=1
+                total+=n
+            if cnt<=m:
+                right=mid
+            else:
+                left=mid+1
+        return int(left)
+        
